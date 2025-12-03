@@ -1,6 +1,13 @@
-import {useParams, Link} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import Navbar from './components/Navbar'
+import Navbar from './Navbar'
 
-const API_URL = "http://localhost:8000/api";
+const GiftModal = ({ people }) => {
+    return (
+        <div className="gift-info">
+            <h1>Gift info</h1>
+        </div>
+    );
+};
+
+export default GiftModal;
