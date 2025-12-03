@@ -32,7 +32,7 @@ const App = () => {
     <>
     <Navbar />
     <h1>Family and Gifts</h1>
-    <PeopleList peoples={people} />
+    <PeopleList people={people} />
     <GiftList gifts={gifts} />
     </>
   );
