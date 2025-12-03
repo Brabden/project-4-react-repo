@@ -2,20 +2,20 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import './App.css'
 import Navbar from './components/Navbar'
-import FamilyMemberList from './components/FamilyMemberList'
+import PeopleList from './components/PeopleList';
 import GiftList from './components/GiftList'
-const API_URL = "http://localhost:5000";
+const API_URL = "http://127.0.0.1:8000";
 
 const App = () => {
-  const [familymembers, setFamilyMembers] = useState([]);
+  const [people, setPeople] = useState([]);
   const [gifts, setGifts] = useState([]);
  
   useEffect(() => {
     const fetchData = async() => {
       try {
         // Fetching family members
-        const familyResponse = await axios.get(`${API_URL}/api/family-members`);
-        setFamilyMembers(familyResponse.data);
+        const peopleResponse = await axios.get(`${API_URL}/api/people`);
+        setPeople(peopleResponse.data);
 
         //Fetching gifts
         const giftsResponse = await axios.get(`${API_URL}/api/gifts`);
@@ -32,7 +32,7 @@ const App = () => {
     <>
     <Navbar />
     <h1>Family and Gifts</h1>
-    <FamilyMemberList familymembers={familymembers} />
+    <PeopleList peoples={people} />
     <GiftList gifts={gifts} />
     </>
   );
