@@ -15,10 +15,12 @@ const App = () => {
       try {
         // Fetching family members
         const peopleResponse = await axios.get(`${API_URL}/api/people`);
+        console.log("People Data:", peopleResponse.data)
         setPeople(peopleResponse.data);
 
         //Fetching gifts
         const giftsResponse = await axios.get(`${API_URL}/api/gifts`);
+        console.log("Gifts Data:", giftsResponse.data)
         setGifts(giftsResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,8 +34,19 @@ const App = () => {
     <>
     <Navbar />
     <h1>Family and Gifts</h1>
-    <PeopleList peoples={people} />
-    <GiftList gifts={gifts} />
+    <div className="split-view" style={({display: "flex", gap: "20px" })}>
+
+      <div className="people-section">
+      <h3>People</h3>
+      <PeopleList people={people} />
+      </div>
+
+      <div className="gifts-section">
+      <h3>Gifts</h3>
+      <GiftList gifts={gifts} />
+      </div>
+      
+    </div>
     </>
   );
 };

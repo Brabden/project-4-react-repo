@@ -1,0 +1,83 @@
+body {
+  background-color: #333;
+  color: #eee;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #A5C9FF;
+  margin-bottom: 40px;
+}
+
+.split-view {
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+}
+
+.people-section, .gifts-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.people-section h3 {
+    text-align: center;
+    color: #A5C9FF;
+    margin-bottom: 40px;
+}
+
+.gifts-section h3 {
+    text-align: center;
+    color: #A5C9FF;
+    margin-bottom: 40px;
+}
+
+/* Gift Section */
+.gift-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gift-card {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.gift-card h3 {
+  color: #A5C9FF;
+  margin-top: 0;
+}
+
+/* People Section */
+.people-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.people-card {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.people-card h3 {
+  color: #A5C9FF;
+  margin-top: 0;
+}
+
