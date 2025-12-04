@@ -3,10 +3,13 @@ import axios from 'axios';
 import GiftCard from "./GiftCard";
 
 const GiftList = ({ gifts }) => {
+if (!gifts || gifts.length === 0) {
+    return <p>No gifts found.</p>
+}
     return (
         <div className="gift-list">
             {gifts.map((gift) => (
-                <GiftCard key={gift.name} gift={gifts} />
+                <GiftCard key={gift.name} gift={gift} />
             ))}
         </div>
     );

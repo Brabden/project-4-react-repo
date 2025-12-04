@@ -1,12 +1,15 @@
 import PeopleCard from "./PeopleCard";
 
 const PeopleList = ({ people }) => {
+if (!people || people.length === 0) {
+    return <p>No people found.</p>
+}
     return (
         <div className="people-list">
-            {people.map((peoples) => (
+            {people.map((person) => (
                 <PeopleCard
-                key={peoples.name}
-                people={peoples}
+                key={person.id}
+                person={person}
                 />
             ))}
         </div>
