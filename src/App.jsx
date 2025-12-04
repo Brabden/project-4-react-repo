@@ -35,7 +35,7 @@ const App = () => {
 // Update handler
 const handleUpdatePerson = async (id, newName) => {
   try {
-    const res = await axios.patch(`${API_URL}/api/people/${id}`, {
+    const res = await axios.patch(`${API_URL}/api/person/${id}`, {
       name: newName
     });
 
@@ -50,10 +50,21 @@ const handleUpdatePerson = async (id, newName) => {
 //Delete person from state
 const handleDeletePerson = async (id) => {
   try {
-    await axios.delete(`${API_URL}/api/people/${id}`);
+    await axios.delete(`${API_URL}/api/person/${id}`);
   setPeople((previous) => previous.filter((p) => p.id !== id));
 } catch (error) {
   console.error("Error updating person:", error);
+  }
+};
+
+const handleAddPerson = async (newName) => {
+  try {
+    const res = await axios.post(`${API_URL}/api/person`, {
+      name: newName
+    });
+    setPeople((previous) => [...previous, res.data]);
+  } catch (error) {
+    console.error("Error adding person:", error);
   }
 };
 
@@ -67,6 +78,7 @@ const handleDeletePerson = async (id) => {
       <h3>People</h3>
       <PeopleList 
       people={people}
+      onAddPerson={handleAddPerson}
       onUpdatePerson={handleUpdatePerson}
       onDeletePerson={handleDeletePerson}
       />
