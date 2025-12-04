@@ -32,6 +32,31 @@ const App = () => {
     fetchData();
   }, []);
 
+// Update handler
+const handleUpdatePerson = async (id, newName) => {
+  try {
+    const res = await axios.patch(`${API_URL}/api/people/${id}`, {
+      name: newName
+    });
+
+    setPeople ((previous) => 
+      previous.map((p) => (p.id === id ? res.data : p))
+    );
+  } catch (error) {
+    console.error("Error updating person:", error);
+  }
+};
+
+//Delete person from state
+const handleDeletePerson = async (id) => {
+  try {
+    await axios.delete(`${API_URL}/api/people/${id}`);
+  setPeople((previous) => previous.filter((p) => p.id !== id));
+} catch (error) {
+  console.error("Error updating person:", error);
+  }
+};
+
   return (
     <>
     <Navbar />
@@ -40,7 +65,11 @@ const App = () => {
 
       <div className="people-section">
       <h3>People</h3>
-      <PeopleList people={people} />
+      <PeopleList 
+      people={people}
+      onUpdatePerson={handleUpdatePerson}
+      onDeletePerson={handleDeletePerson}
+      />
       </div>
 
       <div className="gifts-section">

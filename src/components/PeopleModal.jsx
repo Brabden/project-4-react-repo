@@ -1,26 +1,43 @@
-import React,{ useState } from 'react';
-const PeopleModal=(props)=>{
+import React, { useState, useEffect } from 'react';
+const PeopleModal=({ isOpen, person, onUpdatePerson, onDeletePerson, onClose }) => {
 const [isEditing, setIsEditing] = useState(false)
- const [formData, setFormData] = useState({
-    name: '',
- })
+const [name, setName] = useState(person.name);
 
-const handleChange=(e) => {
-    setFormData({...formData,[e.target.name]:e.target.value})
-}
+useEffect(() => {
+    setName(person.name);
+}, [person]);
 
-    return(
-        <div style={{display:props.isOpen ? "block":"none"}}>
-            <h3>{props.person.name}</h3>
-<button>Edit Name</button>
-<form style={{display:props.isOpen ? "block":"none"}}>
-<input type="text" id="name" name="name" value={formData.name} onChange={handleChange}></input>
-<input type="submit" value="save"/>
+const handleSubmit =(e) => {
+    e.preventDefault();
+    onUpdatePerson(person.id, name);
+    setIsEditing(false);
+    onClose();
+};
 
+const handleDelete = () => {
+    onDeletePerson(person.id);
+    onClose();
+};
+
+if (!isOpen) return null;
+
+return (
+    <div className="people-modal">
+    <h3>{name}</h3>
+<button onClick={() => setIsEditing(!isEditing)}>
+    {isEditing ? "Cancel" : "Edit Name"}
+</button>
+{isEditing && (
+<form onSubmit={handleSubmit}>
+<input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+<button type="submit">Save</button>
 </form>
-<button>Delete</button>
-  
-        </div>
-    )
-}
+)}
+
+<button onClick={handleDelete} style={{ color: "red" }}>Delete</button>
+<button onClick={onClose}>Close</button>
+</div>
+    );
+};
+
 export default PeopleModal
