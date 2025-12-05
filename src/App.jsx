@@ -1,3 +1,4 @@
+import { handleUpdateGift, handleDeleteGift } from './giftHandlers'; //cindy added
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import './App.css'
@@ -6,6 +7,9 @@ import PeopleList from './components/PeopleList';
 // import PeopleModal from './components/PeopleModal'
 import GiftModal from './components/GiftModal'
 import GiftList from './components/GiftList'
+import CreateGiftForm from './components/CreateGiftForm'; //cindy added
+
+
 const API_URL = "http://127.0.0.1:8000";
 
 const App = () => {
@@ -75,19 +79,24 @@ const handleAddPerson = async (newName) => {
     <img className="main-image" src="https://i.imgur.com/dyoFoj8.jpeg"></img>
     <div className="split-view" style={({display: "flex", gap: "20px" })}>
 
-      <div className="people-section">
-      <h3>People</h3>
-      <PeopleList 
+  <div className="people-section">
+    <h3>People</h3>
+    <PeopleList 
       people={people}
       onAddPerson={handleAddPerson}
       onUpdatePerson={handleUpdatePerson}
       onDeletePerson={handleDeletePerson}
-      />
-      </div>
+    />
+  </div>
 
-      <div className="gifts-section">
+  <div className="gifts-section">
       <h3>Gifts</h3>
-      <GiftList gifts={gifts} />
+     <CreateGiftForm personId={1} onGiftCreated={refreshGifts} />  {/* cindy added */}
+     <GiftList 
+    gifts={gifts}   /*updated..cindy*/
+    onUpdateGift={(id, data) => handleUpdateGift(id, data, setGifts)} /*added..cindy */
+    onDeleteGift={(id) => handleDeleteGift(id, setGifts)} /*added..cindy*/
+/>
       </div>
       
     </div>

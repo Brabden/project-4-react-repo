@@ -1,4 +1,9 @@
-const GiftCard = ({ gift }) => {
+import { useState } from "react";  // cindy added
+import GiftModal from "./GiftModal";
+
+const GiftCard = ({ gift, onUpdateGift, onDeleteGift }) => {
+    const [modalOpen, setModalOpen] = useState(false);
+
 
     console.log(gift);
 
