@@ -9,7 +9,15 @@ body {
 h1 {
   text-align: center;
   color: #A5C9FF;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.main-image {
+  display: block;
+  width: 1000px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .split-view {
@@ -26,13 +34,15 @@ h1 {
 .people-section h3 {
     text-align: center;
     color: #A5C9FF;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-decoration: underline;
 }
 
 .gifts-section h3 {
     text-align: center;
     color: #A5C9FF;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-decoration: underline;
 }
 
 /* Gift Section */

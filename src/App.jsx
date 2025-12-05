@@ -71,7 +71,8 @@ const handleAddPerson = async (newName) => {
   return (
     <>
     <Navbar />
-    <h1>Family and Gifts</h1>
+    <h1>People and Gifts</h1>
+    <img className="main-image" src="https://i.imgur.com/dyoFoj8.jpeg"></img>
     <div className="split-view" style={({display: "flex", gap: "20px" })}>
 
       <div className="people-section">
