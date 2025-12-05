@@ -20,7 +20,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         // Fetching family members
-        const peopleResponse = await axios.get(`${API_URL}/api/people`);
+        const peopleResponse = await axios.get(`${API_URL}/api/person`);
         console.log("People Data:", peopleResponse.data)
         setPeople(peopleResponse.data);
 
@@ -39,7 +39,7 @@ const App = () => {
 // Update handler
 const handleUpdatePerson = async (id, newName) => {
   try {
-    const res = await axios.patch(`${API_URL}/api/people/${id}`, {
+    const res = await axios.patch(`${API_URL}/api/person/${id}`, {
       name: newName
     });
 
@@ -54,30 +54,36 @@ const handleUpdatePerson = async (id, newName) => {
 //Delete person from state
 const handleDeletePerson = async (id) => {
   try {
-    await axios.delete(`${API_URL}/api/people/${id}`);
+    await axios.delete(`${API_URL}/api/person/${id}`);
   setPeople((previous) => previous.filter((p) => p.id !== id));
 } catch (error) {
   console.error("Error updating person:", error);
   }
 };
-const refreshGifts = async () => { 
+
+const handleAddPerson = async (newName) => {
   try {
-    const { data } = await axios.get(`${API_URL}/api/gifts`);
-    setGifts(data);
-  } catch (err) {
-    console.error("Error fetching gifts:", err);
+    const res = await axios.post(`${API_URL}/api/person`, {
+      name: newName
+    });
+    setPeople((previous) => [...previous, res.data]);
+  } catch (error) {
+    console.error("Error adding person:", error);
   }
 };
+
   return (
     <>
- <Navbar />
-<h1>Family and Gifts</h1>
-<div className="split-view" style={({display: "flex", gap: "20px" })}>
+    <Navbar />
+    <h1>People and Gifts</h1>
+    <img className="main-image" src="https://i.imgur.com/dyoFoj8.jpeg"></img>
+    <div className="split-view" style={({display: "flex", gap: "20px" })}>
 
   <div className="people-section">
     <h3>People</h3>
     <PeopleList 
       people={people}
+      onAddPerson={handleAddPerson}
       onUpdatePerson={handleUpdatePerson}
       onDeletePerson={handleDeletePerson}
     />

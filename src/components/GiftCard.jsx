@@ -8,22 +8,12 @@ const GiftCard = ({ gift, onUpdateGift, onDeleteGift }) => {
     console.log(gift);
 
     return (
-        <>
-            <div className="gift-card" onClick={() => setModalOpen(true)}>
-                <h3>{gift.name}</h3>
-                <h3>{gift.link}</h3>
-                <h3>{gift.cost}</h3>
-            </div>
-           <GiftModal  // cindy added
-                isOpen={modalOpen}
-                gift={gift}
-                onUpdateGift={onUpdateGift}
-                onDeleteGift={onDeleteGift}
-                onClose={() => setModalOpen(false)}
-            />
-        </>
-    );
-};   
-
+        <div className="gift-card">
+            <h3>{gift.name}</h3>
+            <h3><a href={gift.link} target="blank">Link to item</a></h3>
+            <h3>${gift.cost}</h3>
+        </div>
+    )
+}
 
 export default GiftCard;
