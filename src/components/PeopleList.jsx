@@ -44,9 +44,10 @@ const PeopleList = ({ people, onAddPerson, onUpdatePerson, onDeletePerson }) => 
                         id="person-to-add"
                         onChange={handleChange}
                         value={addName}
-                        placeholder="Add a family member..."
+                        placeholder="Add a person..."
+                        className="add-person-input"
                     />
-                    <button type="submit">Add</button>
+                    <button type="submit" className="add-person-btn">Add</button>
                 </form>
             </div>
         </>

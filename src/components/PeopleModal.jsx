@@ -24,18 +24,18 @@ if (!isOpen) return null;
 return (
     <div className="people-modal">
     <h3>{name}</h3>
-<button onClick={() => setIsEditing(!isEditing)}>
+<button className="p-modal-button" onClick={() => setIsEditing(!isEditing)}>
     {isEditing ? "Cancel" : "Edit Name"}
 </button>
 {isEditing && (
-<form onSubmit={handleSubmit}>
-<input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-<button type="submit">Save</button>
+<form className="edit-person" onSubmit={handleSubmit}>
+<input type="text" className="edit-person-input" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+<button className="p-modal-button" type="submit">Save</button>
 </form>
 )}
 
-<button onClick={handleDelete} style={{ color: "red" }}>Delete</button>
-<button onClick={onClose}>Close</button>
+<button className="p-modal-button" onClick={handleDelete} style={{ color: "red" }}>Delete</button>
+<button className="p-modal-button" onClick={onClose}>Close</button>
 </div>
     );
 };

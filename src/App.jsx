@@ -16,7 +16,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         // Fetching family members
-        const peopleResponse = await axios.get(`${API_URL}/api/people`);
+        const peopleResponse = await axios.get(`${API_URL}/api/person`);
         console.log("People Data:", peopleResponse.data)
         setPeople(peopleResponse.data);
 
