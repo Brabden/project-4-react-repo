@@ -25,6 +25,21 @@ const PeopleList = ({ people, onAddPerson, onUpdatePerson, onDeletePerson }) => 
 
     return (
         <>
+            <div>
+
+                <form className="add" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="person-to-add"
+                        id="person-to-add"
+                        onChange={handleChange}
+                        value={addName}
+                        placeholder="Add a person..."
+                        className="add-input"
+                    />
+                    <button type="submit" className="add-btn">Add</button>
+                </form>
+            </div>
             <div className="people-list">
                 {people.map((person) => (
                     <PeopleCard
@@ -34,21 +49,6 @@ const PeopleList = ({ people, onAddPerson, onUpdatePerson, onDeletePerson }) => 
                         onDeletePerson={onDeletePerson}
                     />
                 ))}
-            </div>
-            <div>
-
-                <form className="add-person" onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        name="person-to-add"
-                        id="person-to-add"
-                        onChange={handleChange}
-                        value={addName}
-                        placeholder="Add a person..."
-                        className="add-person-input"
-                    />
-                    <button type="submit" className="add-person-btn">Add</button>
-                </form>
             </div>
         </>
     );

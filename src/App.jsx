@@ -72,6 +72,16 @@ const handleAddPerson = async (newName) => {
   }
 };
 
+const refreshGifts = async () => {
+  try {
+    const { data } = await axios.get(`${API_URL}/api/gifts`);
+    setGifts(data);
+  } catch (err) {
+    console.error("Error fetching gifts:", err);
+  }
+}; 
+
+
   return (
     <>
     <Navbar />
@@ -91,7 +101,7 @@ const handleAddPerson = async (newName) => {
 
   <div className="gifts-section">
       <h3>Gifts</h3>
-     <CreateGiftForm personId={1} onGiftCreated={refreshGifts} />  {/* cindy added */}
+     <CreateGiftForm personId={1} onGiftCreated={refreshGifts} />
      <GiftList 
     gifts={gifts}   /*updated..cindy*/
     onUpdateGift={(id, data) => handleUpdateGift(id, data, setGifts)} /*added..cindy */

@@ -36,13 +36,12 @@ if (!isOpen) return null;
 
 return (
     <div className="people-modal">
-    <h3>{name}</h3>
 <button className="p-modal-button" onClick={() => setIsEditing(!isEditing)}>
     {isEditing ? "Cancel" : "Edit Name"}
 </button>
 
 {/* cindy added - View Gifts button */}
-<button onClick={() => setShowGifts(!showGifts)}>
+<button className="add-btn" onClick={() => setShowGifts(!showGifts)}>
     {showGifts ? "Hide Gifts" : "View Gifts"}
 </button>
 {isEditing && (

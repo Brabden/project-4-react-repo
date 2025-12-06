@@ -23,8 +23,7 @@ const CreateGiftForm = ({ personId, onGiftCreated }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h4>Add New Gift</h4>
+        <form className="add" onSubmit={handleSubmit}>
             
             <input
                 type="text"
@@ -32,6 +31,7 @@ const CreateGiftForm = ({ personId, onGiftCreated }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                className="add-input"
             />
             
             <input
@@ -39,6 +39,7 @@ const CreateGiftForm = ({ personId, onGiftCreated }) => {
                 placeholder="Link"
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
+                className="add-input"
             />
             
             <input
@@ -46,9 +47,10 @@ const CreateGiftForm = ({ personId, onGiftCreated }) => {
                 placeholder="Cost"
                 value={cost}
                 onChange={(e) => setCost(e.target.value)}
+                className="add-input"
             />
             
-            <button type="submit">Add Gift</button>
+            <button className="add-btn" type="submit">Add Gift</button>
         </form>
     );
 };
