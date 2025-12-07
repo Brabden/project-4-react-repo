@@ -10,10 +10,9 @@ const GiftCard = ({ gift, onUpdateGift, onDeleteGift }) => {
     return (
         <>
         <div className="gift-card">
-            <h3>{gift.name}</h3>
-            <h3><a href={gift.link} target="blank">Link to item</a></h3>
+            <h3 onClick={()=>{setModalOpen(!modalOpen)}}className="gift-header">{gift.name}</h3>
+            <h3><a href={gift.link} target="_blank">Link to item</a></h3>
             <h3>${gift.cost}</h3>
-        </div>
         <GiftModal  // cindy added
                 isOpen={modalOpen}
                 gift={gift}
@@ -21,6 +20,7 @@ const GiftCard = ({ gift, onUpdateGift, onDeleteGift }) => {
                 onDeleteGift={onDeleteGift}
                 onClose={() => setModalOpen(false)}
             />
+            </div>
             </>
     )
 }

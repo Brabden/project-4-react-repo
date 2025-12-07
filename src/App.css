@@ -35,14 +35,19 @@ h1 {
     text-align: center;
     color: #A5C9FF;
     margin-bottom: 30px;
-    text-decoration: underline;
 }
+
+
 
 .gifts-section h3 {
     text-align: center;
     color: #A5C9FF;
     margin-bottom: 30px;
-    text-decoration: underline;
+}
+
+.gift-header {
+  font-style: italic;
+  font-size: 20px;
 }
 
 /* Gift Section */
@@ -61,14 +66,19 @@ h1 {
   width: 250px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  position: relative;
 }
 
 .gift-card h3 {
   color: #A5C9FF;
   margin-top: 0;
+}
+
+.form-header {
+  color: #A5C9FF;
+  margin-top: 4px;
 }
 
 /* People Section */
@@ -101,15 +111,31 @@ h1 {
   padding: 10px 12px;
   border: 1px solid white;
   margin-left: 4px;
+  margin-top: 6px;
 }
 
-.edit-person-input {
+.edit-input {
   padding: 10px 12px;
   background: #333;
   border-radius: 8px;
   color: #A5C9FF;
+  width: 100%;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.gift-edit-input {
+  background: #333;
+  border-radius: 8px;
+  color: #A5C9FF;
+  width: 90%;
+  padding: 10px;
+}
+
+.gift-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 /* Add Person */

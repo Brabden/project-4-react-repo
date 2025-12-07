@@ -35,7 +35,7 @@ const handleDelete = () => {
 if (!isOpen) return null;
 
 return (
-    <div className="people-modal">
+<div className="people-modal">
 <button className="p-modal-button" onClick={() => setIsEditing(!isEditing)}>
     {isEditing ? "Cancel" : "Edit Name"}
 </button>
@@ -46,7 +46,7 @@ return (
 </button>
 {isEditing && (
 <form className="edit-person" onSubmit={handleSubmit}>
-<input type="text" className="edit-person-input" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+<input type="text" className="edit-input" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
 <button className="p-modal-button" type="submit">Save</button>
 </form>
 )}

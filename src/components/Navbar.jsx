@@ -33,15 +33,6 @@ const Navbar = () => {
                 >
                     Gifts
                 </li>
-                <li 
-                    style={{
-                        ...styles.menuItem,
-                        ...(activeTab === 'about' ? styles.active : {})
-                    }}
-                    onClick={() => handleTabClick('about')}
-                >
-                    About
-                </li>
             </ul>
 
             <div>

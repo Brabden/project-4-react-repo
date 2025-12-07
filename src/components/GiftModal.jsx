@@ -43,49 +43,48 @@ const GiftModal = ({ isOpen, gift, onUpdateGift, onDeleteGift, onClose }) => {
 
     return (
         <div className="gift-modal">
-            <h3>{formData.name}</h3>
-            <p>Link: {formData.link}</p>
-            <p>Cost: ${formData.cost}</p>
-
-            <button onClick={() => setIsEditing(!isEditing)}>
+            <button className="p-modal-button" onClick={() => setIsEditing(!isEditing)}>
                 {isEditing ? "Cancel" : "Edit Gift"}
             </button>
 
             {isEditing && (
                 <form onSubmit={handleSubmit}>
-                    <label>Gift Name:</label>
+                    <label className="form-header">Gift Name: </label>
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        className="gift-edit-input"
                     />
 
-                    <label>Link:</label>
+                    <label className="form-header">Link:</label>
                     <input
                         type="text"
                         name="link"
                         value={formData.link}
                         onChange={handleChange}
+                        className="gift-edit-input"
                     />
 
-                    <label>Cost:</label>
+                    <label className="form-header">Cost:</label>
                     <input
-                        type="number"
+                        type="text"
                         name="cost"
                         value={formData.cost}
                         onChange={handleChange}
+                        className="gift-edit-input"
                     />
 
-                    <button type="submit">Save Changes</button>
+                    <button type="submit" className="p-modal-button">Save Changes</button>
                 </form>
             )}
 
-            <button onClick={handleDelete} style={{ color: "red" }}>
+            <button className="p-modal-button" onClick={handleDelete} style={{ color: "red" }}>
                 Delete Gift
             </button>
-            <button onClick={onClose}>Close</button>
+            <button className="p-modal-button" onClick={onClose}>Close</button>
         </div>
     );
 };
