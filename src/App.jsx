@@ -1,5 +1,5 @@
 import { handleUpdateGift, handleDeleteGift } from './giftHandlers'; //cindy added
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import axios from 'axios';
 import './App.css'
 import Navbar from './components/Navbar'
@@ -11,6 +11,7 @@ import CreateGiftForm from './components/CreateGiftForm'; //cindy added
 
 
 const API_URL = "http://127.0.0.1:8000";
+export const TrackerContext = createContext();
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -83,7 +84,7 @@ const refreshGifts = async () => {
 
 
   return (
-    <>
+    <TrackerContext.Provider value={{people, gifts, API_URL}}>
     <Navbar />
     <h1>People and Gifts</h1>
     <img className="main-image" src="https://i.imgur.com/dyoFoj8.jpeg"></img>
@@ -110,7 +111,7 @@ const refreshGifts = async () => {
       </div>
       
     </div>
-    </>
+    </TrackerContext.Provider>
   );
 };
 

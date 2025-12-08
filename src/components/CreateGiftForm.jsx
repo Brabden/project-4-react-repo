@@ -13,7 +13,7 @@ const CreateGiftForm = ({ personId, onGiftCreated }) => {
             name: name,
             link: link,
             cost: cost,
-            person: personId
+            // person: personId
         });
         // Clear form
         setName('');

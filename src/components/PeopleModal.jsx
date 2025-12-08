@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';  // cindy added
+import { TrackerContext } from '../App';
 const PeopleModal=({ isOpen, person, onUpdatePerson, onDeletePerson, onClose }) => {
 const [isEditing, setIsEditing] = useState(false)
 const [name, setName] = useState(person.name);
 const [showGifts, setShowGifts] = useState(false);  // cindy added
 const [gifts, setGifts] = useState([]);  // cindy added
+const [wishlist, setWishlist] = useState({});
+
+const trackerContext = useContext(TrackerContext);
 
 useEffect(() => {
     setName(person.name);
@@ -13,12 +17,14 @@ useEffect(() => {
 
 // cindy added
     useEffect(() => {
-    if (showGifts) {
-        axios.get(`http://127.0.0.1:8000/api/people/${person.id}/gifts/`)
-            .then(res => setGifts(res.data));
-    }
-}, [showGifts]);
+        const getWishlist = async() => {
+            const wishlist = await axios.get(`http://127.0.0.1:8000/api/person/${person.id}/wishlist`);
+            setWishlist(wishlist.data);
+        }
+        getWishlist();
+}, []);
      // cindy added end
+
 
 const handleSubmit =(e) => {
     e.preventDefault();
@@ -53,16 +59,16 @@ return (
 {showGifts && (
     <div>
         <h4>Gifts for {name}</h4>
-        {gifts.length === 0 ? (
+        {wishlist.items.length == 0 ? (
             <p>No gifts yet</p>
-        ) : (
-            gifts.map((gift) => (
-                <div key={gift.id}>
-                    <p><strong>{gift.name}</strong></p>
-                    <p>Link: {gift.link}</p>
-                    <p>Cost: ${gift.cost}</p>
-                </div>
-            ))
+         ) : wishlist.items.map((item) => {
+                const gift = trackerContext.gifts.find(gift => gift.id == item);
+                return(
+                    <div key={gift.id}>
+                        <a href={gift.link}><p><strong>{gift.name}</strong></p></a>
+                        <p>Cost: ${gift.cost}</p>
+                    </div>
+            )}
         )}
     </div>
 )}
